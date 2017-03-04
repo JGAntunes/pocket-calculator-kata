@@ -7,12 +7,53 @@
     "test": "test"
   },
   "scripts": {
-    "test": "cucumber-js"
+    "test": "NODE_PATH=. istanbul cover tape test/*",
+    "lint": "jshint --verbose *.js lib/*.js test/*.js",
+    "style": "jscs *.js lib/*.js test/*.js",
+    "coverage:check": "istanbul check-coverage --statements 100 --functions 100 --lines 100 --branches 100",
+    "coverage": "open coverage/lcov-report/index.html"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cucumber": "^2.0.0-rc.7"
-  }
+  },
+  "devDependencies": {
+    "istanbul": "^0.4.5",
+    "jscs": "^3.0.7",
+    "jshint": "^2.9.4",
+    "pre-commit": "^1.2.2",
+    "tape": "^4.6.3"
+  },
+  "jscsConfig": {
+    "excludeFiles": [
+      "reports/*",
+      "node_modules/*",
+      "package.json",
+      "npm-debug.log"
+    ],
+    "preset": "airbnb",
+    "fix": true
+  },
+  "jshintConfig": {
+    "boss": true,
+    "node": true,
+    "strict": false,
+    "smarttabs": true,
+    "maxlen": 80,
+    "newcap": false,
+    "undef": true,
+    "unused": true,
+    "onecase": true,
+    "indent": 2,
+    "sub": true,
+    "esversion": 6
+  },
+  "pre-commit": [
+    "lint",
+    "style",
+    "test",
+    "coverage:check"
+  ]
 }
