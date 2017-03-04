@@ -1,14 +1,8 @@
 const Calculator = require('./lib/calculator');
-const readline = require('readline');
+const IOHandler = require('./lib/io-handler');
+const operators = require('./lib/operators');
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
+const calc = Calculator();
+const io = IOHandler(operators);
 
-rl.question('0. ', (answer) => {
-  const calc = Calculator();
-  // console.log(`Thank you for your valuable feedback: ${answer}`);
-  setTimeout(() => rl.close(), 2000);
-
-});
+io.on('add', (value) => calc.add(value));
