@@ -1,5 +1,7 @@
 # Pocket Calculator Kata
 
+[![Build Status](https://travis-ci.org/JGAntunes/pocket-calculator-kata.svg?branch=master)](https://travis-ci.org/JGAntunes/pocket-calculator-kata)
+
 The aim of this kata is to implement (most of) the features of the [Casio SL-1100TV][calculator] 10-digit calculator with "stylish & cool design". There aren't too many features, but there are many traps for the unwary.
 
 The UI for the calculator is the keyboard - your implementation must respond to button presses - and the display - your implementation must update a display. All test cases are expressed as a sequence of button presses and an expected display state. You must recreate the display _exactly_, and this makes some of the features much harder to get right.
